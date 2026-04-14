@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Trash2, Pencil } from "lucide-react";
+import { toast } from "sonner";
 
 const DataTable = ({ onEdit, refreshKey }) => {
   const [invoices, setInvoices] = useState([]);
@@ -22,6 +23,7 @@ const DataTable = ({ onEdit, refreshKey }) => {
       const updated = invoices.filter((inv) => inv.id !== id);
       localStorage.setItem("salesInvoices", JSON.stringify(updated));
       setInvoices(updated);
+      toast.warning("Sales Invoice record deleted successfully")
     }
   };
 
